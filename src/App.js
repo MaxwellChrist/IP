@@ -4,20 +4,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Testing again</h1>
-        <ul>
-          <li>IP Address Tracker</li>
-          <li>Search for any IP address or domain</li>
-          <li>IP Address</li>
-          <li>Location</li>
-          <li>Timezone</li>
-          <li>UTC add offset value dynamically using the API</li>
-          <li>ISP</li>
-        </ul>
+        <h1>IP Address Tracker</h1>
+        <div className="searchInput">
+          <form>
+            <input type="text" placeholder="Search for any IP address or domain"></input>
+            <button type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
+          </form>
+        </div>
       </header>
       <div className="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="https://github.com/MaxwellChrist/IP">Max Christ</a>.
+        <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.</p> 
+        <p>Coded by <a href="https://github.com/MaxwellChrist/IP">Max Christ</a>.</p>
       </div>
     </div>
   );
