@@ -1,21 +1,34 @@
 import './App.css';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import React, { useState, useEffect } from 'react'
 
 export default function App() {
+
+  let [address, setAddress] = useState('')
+
+  function userSubmit(e){
+    e.preventDefault()
+    let userInput = document.getElementById("user-input")
+    setAddress(userInput.value)
+  }
+
+  useEffect(() => {
+    console.log("state has changed to: " + address)
+  },[address])
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>IP Address Tracker</h1>
         <div className="searchInput">
-          <form>
-            <input type="text" placeholder="Search for any IP address or domain"></input>
+          <form onSubmit={userSubmit}>
+            <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
             <button type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
         </div>
       </header>
       <div id="leaflet-container">
-      <MapContainer id="map-container" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
+      <MapContainer id="map-container" center={[51.505, -0.09]} zoom={12} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
