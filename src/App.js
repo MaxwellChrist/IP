@@ -7,14 +7,16 @@ export default function App() {
 
   let [address, setAddress] = useState(null)
   let [data, setData] = useState(null)
-  let headings = ["IP Address", "Location", "Timezone", "ISP"]
-  let dataHeadings = ["ip", "location.city" , "Timezone", "ISP"]
+  let [marker, setMarker] = useState([51.505, -0.09])
 
   function userSubmit(e){
     e.preventDefault()
     let userInput = document.getElementById("user-input")
     setAddress(userInput.value)
   }
+
+  useEffect(() => {
+  },[])
 
   useEffect(() => {
     async function IpAddressFinder() {
@@ -40,6 +42,7 @@ export default function App() {
       console.log(`${data.location.city}, ${data.location.region}`)
       console.log(data.location.timezone)
       console.log(data.isp)
+      setMarker([data.location.lat, data.location.lng])
     }
   },[data])
 
@@ -56,12 +59,12 @@ export default function App() {
         </div>
       </header>
       <div id="leaflet-container">
-        <MapContainer id="map-container" center={[51.505, -0.09]} zoom={12} scrollWheelZoom={true}>
+        <MapContainer id="map-container" center={marker} zoom={12} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
+        <Marker position={marker}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
