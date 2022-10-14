@@ -1,10 +1,12 @@
 import './App.css';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function App() {
 
-  let [address, setAddress] = useState('')
+  let [address, setAddress] = useState(null)
+  let [data, setData] = useState(null)
 
   function userSubmit(e){
     e.preventDefault()
@@ -12,8 +14,36 @@ export default function App() {
     setAddress(userInput.value)
   }
 
+  // useEffect(() => {
+  //   async function IpAddressFinder() {
+  //     let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
+  //     try {
+  //       const response = await fetch(endpoint);
+  //       console.log(response)
+  //       if(response.ok){
+  //         const jsonResponse = await response.json()
+  //         setData(jsonResponse)
+  //       }
+  //     }
+  //     catch(error){
+  //       console.log(error)
+  //     }
+  //   }
+  //   IpAddressFinder()
+  //   console.log("the data is: " + data)
+  // },[address])
+
   useEffect(() => {
-    console.log("state has changed to: " + address)
+    let url = `https://localhost:8000/data`
+    axios.get(url).then((response) => {
+        console.log("frontend response: " + response)
+        return
+      }).catch((error) => {
+        console.log("frontend error: " + error)
+        return
+      })
+
+
   },[address])
 
   return (
