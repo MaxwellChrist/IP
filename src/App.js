@@ -1,11 +1,14 @@
 import './App.css';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import React, { useState, useEffect } from 'react'
+import IpInfoContainer from './Components/IpInfoContainer';
 
 export default function App() {
 
   let [address, setAddress] = useState(null)
   let [data, setData] = useState(null)
+  let headings = ["IP Address", "Location", "Timezone", "ISP"]
+  let dataHeadings = ["ip", "location.city" , "Timezone", "ISP"]
 
   function userSubmit(e){
     e.preventDefault()
@@ -31,6 +34,15 @@ export default function App() {
     IpAddressFinder()
   },[address])
 
+  useEffect(() => {
+    if (data !== null) {
+      console.log(data.ip)
+      console.log(`${data.location.city}, ${data.location.region}`)
+      console.log(data.location.timezone)
+      console.log(data.isp)
+    }
+  },[data])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -40,20 +52,21 @@ export default function App() {
             <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
             <button type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
+            {data === null ? <div></div> : <IpInfoContainer data={data} />}
         </div>
       </header>
       <div id="leaflet-container">
-      <MapContainer id="map-container" center={[51.505, -0.09]} zoom={12} scrollWheelZoom={true}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-      </MapContainer>
+        <MapContainer id="map-container" center={[51.505, -0.09]} zoom={12} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        </MapContainer>
       </div>
       <div className="attribution">
         <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.</p> 
