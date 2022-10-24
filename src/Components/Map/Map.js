@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 
 const customIcon = new L.Icon({
