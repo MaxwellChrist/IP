@@ -1,7 +1,10 @@
 import './App.css';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import React, { useState, useEffect } from 'react'
 import IpInfoContainer from './Components/IpInfoContainer';
+import Map from './Components/Map/Map';
 
 export default function App() {
 
@@ -9,30 +12,29 @@ export default function App() {
   let [data, setData] = useState(null)
   let [marker, setMarker] = useState([51.505, -0.09])
 
+  async function IpAddressFinder() {
+    let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
+    try {
+      const response = await fetch(endpoint);
+      console.log(response)
+      if(response.ok){
+        const jsonResponse = await response.json()
+        setData(jsonResponse)
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
   function userSubmit(e){
     e.preventDefault()
     let userInput = document.getElementById("user-input")
     setAddress(userInput.value)
+    IpAddressFinder()
   }
 
   useEffect(() => {
-  },[])
-
-  useEffect(() => {
-    async function IpAddressFinder() {
-      let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
-      try {
-        const response = await fetch(endpoint);
-        console.log(response)
-        if(response.ok){
-          const jsonResponse = await response.json()
-          setData(jsonResponse)
-        }
-      }
-      catch(error){
-        console.log(error)
-      }
-    }
     IpAddressFinder()
   },[address])
 
@@ -58,19 +60,7 @@ export default function App() {
             {data === null ? <div></div> : <IpInfoContainer data={data} />}
         </div>
       </header>
-      <div id="leaflet-container">
-        <MapContainer id="map-container" center={marker} zoom={12} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={marker}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-        </MapContainer>
-      </div>
+      <Map data={data} marker={marker} />
       <div className="attribution">
         <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.</p> 
         <p>Coded by <a href="https://github.com/MaxwellChrist/IP">Max Christ</a>.</p>
