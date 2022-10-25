@@ -1,7 +1,7 @@
 import React from 'react'
+import './SearchInfo.css'
 
-export default function IpInfoContainer({data}) {
-    console.log(data)
+export default function SearchInfo({data}) {
     return (
         <>
             <div className="ip-results">

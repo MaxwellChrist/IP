@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import React, { useState, useEffect } from 'react'
-import IpInfoContainer from './Components/IpInfoContainer';
+import SearchInfo from './Components/SearchInfo/SearchInfo';
 import Map from './Components/Map/Map';
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
   let [address, setAddress] = useState(null)
   let [data, setData] = useState(null)
   let [marker, setMarker] = useState([51.505, -0.09])
+  let [error, SetError] = useState(null)
 
   async function IpAddressFinder() {
     let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
@@ -20,10 +21,13 @@ export default function App() {
       if(response.ok){
         const jsonResponse = await response.json()
         setData(jsonResponse)
+      } else {
+        SetError(response.statusText)
       }
     }
     catch(error){
       console.log(error)
+      SetError(error.messages)
     }
   }
 
@@ -31,7 +35,6 @@ export default function App() {
     e.preventDefault()
     let userInput = document.getElementById("user-input")
     setAddress(userInput.value)
-    IpAddressFinder()
   }
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export default function App() {
             <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
             <button type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
-            {data === null ? <div></div> : <IpInfoContainer data={data} />}
+            {data === null ? <div></div> : <SearchInfo data={data} />}
         </div>
       </header>
       <Map data={data} marker={marker} />
