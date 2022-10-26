@@ -1,26 +1,50 @@
-.App {
-  text-align: center;
-}
-
 /* Header */
 .App-header {
   background: url("../public/images/pattern-bg.png");
   min-width: 100vh;
-  height: 25vh;
+  height: 30vh;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: var(--text-input);
-  color: var(--Very-Dark-Gray);
+  justify-content: flex-start;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  color: white;
+  padding-bottom: 20px;
+  margin-top: 40px;
+}
+
+.search-input {
+  width: 600px;
+  height: 50px;
+}
+
+#user-input {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px 0 0 10px;
+  padding-left: 20px;
+  color: var(--dark-gray);
+  background-color: white;
+  border: none;
+}
+
+#user-submit {
+  width: 10%;
+  height: 51px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  background-color: black;
 }
 
 /* Map */
 #leaflet-container {
   display: flex;
-  height: 75vh;
+  height: 70vh;
   width: 100%;
   align-items: center;
   justify-content: center;
