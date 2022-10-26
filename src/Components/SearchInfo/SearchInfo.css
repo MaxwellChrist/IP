@@ -1,14 +1,42 @@
 #ip-container, .ip-results {
-    display: flex;
-    width: 100%;
     background-color: white;
     z-index: 2;
+    border-radius: 20px;
 }
 
 #ip-container {
-    margin-top: 100px;
+    position: absolute;
+    width: 80%;
+    top: 12.5%;
+    margin-top: 5%;
 }
 
 .ip-results {
-    height: 200px;
+    display: flex;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+}
+
+.ip-results-item {
+    display: flex;
+    flex-flow: column wrap;
+    width: 25%;
+    padding: 20px; 
+    justify-content: flex-start;
+}
+
+.ip-results-item-heading {
+    font-size:  1.2rem;
+    color: var(--Dark-Gray);
+    padding-bottom: 10px;
+}
+
+.ip-results-item-data {
+    font-size:  1.8rem;
+    color: var(--Very-Dark-Gray);
+}
+
+.ip-results-border {
+    border-right: 0.1px solid lightgrey;
 }
