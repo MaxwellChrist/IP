@@ -42,10 +42,13 @@
   background-color: black;
 }
 
-/* Footer */
+/* signature */
 .attribution { 
-  font-size: 11px; 
-  text-align: center; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 10px; 
+  text-align: right;
 }
 .attribution a { 
   color: hsl(228, 45%, 44%); 

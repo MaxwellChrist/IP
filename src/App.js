@@ -57,8 +57,8 @@ export default function App() {
       </header>
       <Map data={data} marker={marker} />
       <div className="attribution">
-        <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.</p> 
-        <p>Coded by <a href="https://github.com/MaxwellChrist/IP">Max Christ</a>.</p>
+        <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a></p> 
+        <p>Coded by <a href="https://github.com/MaxwellChrist/IP">Max Christ</a></p>
       </div>
     </main>
   );
