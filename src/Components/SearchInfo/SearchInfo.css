@@ -1,16 +1,14 @@
+#ip-container, .ip-results {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    z-index: 2;
+}
+
 #ip-container {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    width: 75vw;
-    height: 300px;
-    z-index: 10;
+    margin-top: 100px;
 }
 
 .ip-results {
-    display: flexbox;
-    width: 75vw;
-    margin-top: 100px;
-    z-index: -1;
-    background-color: white;
+    height: 200px;
 }

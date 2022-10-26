@@ -19,12 +19,13 @@
 }
 
 .search-input {
-  width: 600px;
+  width: 80vw;
   height: 50px;
+  text-align: center;
 }
 
 #user-input {
-  width: 90%;
+  width: 45%;
   height: 50px;
   border-radius: 10px 0 0 10px;
   padding-left: 20px;
@@ -34,28 +35,12 @@
 }
 
 #user-submit {
-  width: 10%;
+  width: 5%;
   height: 51px;
   border-radius: 0 10px 10px 0;
   border: none;
   background-color: black;
 }
-
-/* Map */
-#leaflet-container {
-  display: flex;
-  height: 70vh;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-#map-container {
-  overflow: auto;
-  height: 75vh;
-  width: 100%;
-}
-
 
 /* Footer */
 .attribution { 
