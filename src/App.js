@@ -58,8 +58,7 @@ export default function App() {
             <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
             <button id="user-submit" type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
-          {data === null ? <div></div> : <SearchInfo data={data} />}
-          {error !== null && address !== null && !firstRequest ? <ErrorInfo error={error} />: <div></div>}
+          {data === null ? <div></div> : <SearchInfo data={data} error={error} />}
         </div>
       </header>
       <Map data={data} marker={marker} />

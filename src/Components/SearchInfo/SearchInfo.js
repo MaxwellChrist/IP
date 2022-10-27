@@ -1,9 +1,11 @@
 import React from 'react'
 import './SearchInfo.css'
+import ErrorInfo from '../ErrorInfo/ErrorInfo';
 
-export default function SearchInfo({data}) {
+export default function SearchInfo({data, error}) {
     return (
         <>
+            {error !== null  ? <ErrorInfo error={error} /> : 
             <div id="ip-container">
                 <div className="ip-results">
                     <div className="ip-results-item ip-results-border">
@@ -24,6 +26,7 @@ export default function SearchInfo({data}) {
                     </div>
                 </div>
             </div>
+            }
         </>
     )
 }
