@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import SearchInfo from './Components/SearchInfo/SearchInfo';
 import Map from './Components/Map/Map';
+import ErrorInfo from './Components/ErrorInfo/ErrorInfo';
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
         if(response.ok){
           const jsonResponse = await response.json()
           setData(jsonResponse)
+          SetError(null)
         } else {
           SetError(response.statusText)
         }
@@ -35,11 +37,12 @@ export default function App() {
       }
     }
     IpAddressFinder()
-  },[address])
+  },[address, error])
 
   useEffect(() => {
     if (data !== null) {
       setMarker([data.location.lat, data.location.lng])
+      SetError(null)
     }
   },[data])
 
@@ -52,7 +55,8 @@ export default function App() {
             <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
             <button id="user-submit" type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
-            {data === null ? <div></div> : <SearchInfo data={data} />}
+          {data === null ? <div></div> : <SearchInfo data={data} />}
+          {error !== null && address !== null ? <ErrorInfo error={error} />: <div></div>}
         </div>
       </header>
       <Map data={data} marker={marker} />
