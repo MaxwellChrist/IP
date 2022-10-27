@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import SearchInfo from './Components/SearchInfo/SearchInfo';
 import Map from './Components/Map/Map';
-import ErrorInfo from './Components/ErrorInfo/ErrorInfo';
 
 export default function App() {
 
@@ -10,7 +9,6 @@ export default function App() {
   let [data, setData] = useState(null)
   let [marker, setMarker] = useState([51.505, -0.09])
   let [error, SetError] = useState(null)
-  let [firstRequest, setFirstRequest] = useState(false)
 
   function userSubmit(e){
     e.preventDefault()
@@ -44,7 +42,6 @@ export default function App() {
   useEffect(() => {
     if (data !== null) {
       setMarker([data.location.lat, data.location.lng])
-      setFirstRequest(true)
       SetError(null)
     }
   },[data])
