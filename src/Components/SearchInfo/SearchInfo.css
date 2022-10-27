@@ -41,10 +41,7 @@
     border-right: 0.1px solid lightgrey;
 }
 
-@media  screen and (max-width: 1000px) {
-    #ip-container {
-        margin-top: 130px;
-    }
+@media  screen and (max-width: 1350px) {
 
     .ip-results, .ip-results-item  {
         padding: 15px;
@@ -56,27 +53,36 @@
     }
     
     .ip-results-item-data {
-        font-size:  1.5rem;
+        font-size:  1.35rem;
         color: var(--Very-Dark-Gray);
     }
 }
 
-@media  screen and (max-width: 800px) {
-    #ip-container {
-        margin-top: 150px;
-    }
+@media  screen and (max-width: 1050px) {
     .ip-results, .ip-results-item  {
         padding: 10px;
     }
-    
     .ip-results-item-heading {
-        font-size:  0.8rem;
+        font-size:  0.7rem;
         color: var(--Dark-Gray);
         padding-bottom: 10px;
     }
     
     .ip-results-item-data {
-        font-size:  1.2rem;
+        font-size:  1rem;
+        color: var(--Very-Dark-Gray);
+    }
+}
+
+@media  screen and (max-width: 800px) {
+    .ip-results-item-heading {
+        font-size:  0.6rem;
+        color: var(--Dark-Gray);
+        padding-bottom: 10px;
+    }
+    
+    .ip-results-item-data {
+        font-size:  0.75rem;
         color: var(--Very-Dark-Gray);
     }
 }

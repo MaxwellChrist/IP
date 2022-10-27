@@ -32,6 +32,7 @@
   color: var(--dark-gray);
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 
 #user-submit {
@@ -40,6 +41,7 @@
   border-radius: 0 15px 15px 0;
   border: none;
   background-color: black;
+  cursor: pointer;
 }
 
 /* signature */
