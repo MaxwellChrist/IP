@@ -1,18 +1,14 @@
-#leaflet-container, #map-container {
+#leaflet-container, #map-container{
     z-index: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 #leaflet-container {
-    display: flex;
     height: 70vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
   }
   
-  #map-container {
-    overflow: auto;
-    height: 70vh;
-    width: 100%;
-  }
-  
+#map-container {
+  height: 100%;
+}

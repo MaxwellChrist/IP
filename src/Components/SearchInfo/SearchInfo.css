@@ -2,20 +2,20 @@
     background-color: white;
     z-index: 2;
     border-radius: 20px;
+    width: 100%;
 }
 
 #ip-container {
-    position: absolute;
-    width: 80%;
-    top: 12.5%;
-    margin-top: 5%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 140px;
 }
 
 .ip-results {
     display: flex;
-    width: 100%;
     text-align: left;
     padding: 20px;
+    justify-content: center;
 }
 
 .ip-results-item {
@@ -39,4 +39,47 @@
 
 .ip-results-border {
     border-right: 0.1px solid lightgrey;
+}
+
+@media  screen and (max-width: 1200px) {
+
+    #ip-container {
+        margin-top: 120px;
+    }
+
+    .ip-results, .ip-results-item  {
+        padding: 15px;
+    }
+
+    .ip-results-item-heading {
+        font-size:  1rem;
+        color: var(--Dark-Gray);
+        padding-bottom: 10px;
+    }
+    
+    .ip-results-item-data {
+        font-size:  1.5rem;
+        color: var(--Very-Dark-Gray);
+    }
+}
+
+@media  screen and (max-width: 900px) {
+    #ip-container {
+        margin-top: 40px;
+    }
+
+    .ip-results, .ip-results-item  {
+        padding: 10px;
+    }
+    
+    .ip-results-item-heading {
+        font-size:  0.8rem;
+        color: var(--Dark-Gray);
+        padding-bottom: 10px;
+    }
+    
+    .ip-results-item-data {
+        font-size:  1.2rem;
+        color: var(--Very-Dark-Gray);
+    }
 }
