@@ -27,7 +27,7 @@
 #user-input {
   width: 45%;
   height: 50px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 15px 0 0 15px;
   padding-left: 20px;
   color: var(--dark-gray);
   background-color: white;
@@ -37,7 +37,7 @@
 #user-submit {
   width: 5%;
   height: 51px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 15px 15px 0;
   border: none;
   background-color: black;
 }
@@ -52,4 +52,13 @@
 }
 .attribution a { 
   color: hsl(228, 45%, 44%); 
+}
+
+@media  screen and (max-width: 600px) {
+  #user-input {
+      width: 85%;
+  }
+    #user-submit {
+      width: 15%;
+  }
 }
