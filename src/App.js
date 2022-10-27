@@ -10,6 +10,7 @@ export default function App() {
   let [data, setData] = useState(null)
   let [marker, setMarker] = useState([51.505, -0.09])
   let [error, SetError] = useState(null)
+  let [firstRequest, setFirstRequest] = useState(false)
 
   function userSubmit(e){
     e.preventDefault()
@@ -24,9 +25,9 @@ export default function App() {
         const response = await fetch(endpoint);
         console.log(response)
         if(response.ok){
+          SetError(null)
           const jsonResponse = await response.json()
           setData(jsonResponse)
-          SetError(null)
         } else {
           SetError(response.statusText)
         }
@@ -37,11 +38,13 @@ export default function App() {
       }
     }
     IpAddressFinder()
+    
   },[address, error])
 
   useEffect(() => {
     if (data !== null) {
       setMarker([data.location.lat, data.location.lng])
+      setFirstRequest(true)
       SetError(null)
     }
   },[data])
@@ -56,7 +59,7 @@ export default function App() {
             <button id="user-submit" type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
           </form>
           {data === null ? <div></div> : <SearchInfo data={data} />}
-          {error !== null && address !== null ? <ErrorInfo error={error} />: <div></div>}
+          {error !== null && address !== null && !firstRequest ? <ErrorInfo error={error} />: <div></div>}
         </div>
       </header>
       <Map data={data} marker={marker} />

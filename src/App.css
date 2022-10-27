@@ -56,7 +56,7 @@
   color: hsl(228, 45%, 44%); 
 }
 
-@media  screen and (max-width: 600px) {
+@media  screen and (max-width: 800px) {
   #user-input {
       width: 85%;
   }
