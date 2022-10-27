@@ -49,7 +49,6 @@
     .ip-results, .ip-results-item  {
         padding: 15px;
     }
-
     .ip-results-item-heading {
         font-size:  1rem;
         color: var(--Dark-Gray);
@@ -82,9 +81,37 @@
     }
 }
 
-/* @media  screen and (max-width: 600px) {
-    #ip-container, .ip-results {
-        background-color: red;
+@media  screen and (max-width: 600px) {
+    #ip-container {
+        margin-top: 20px;
+    }
+
+    .ip-results {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ip-results-item {
+        width: 100%;
+        padding: 15px 50px; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ip-results-border {
+        border-right: none;
+    }
+
+    .ip-results-item-heading {
+        font-size:  1rem;
     }
     
-} */
+    .ip-results-item-data {
+        font-size:  1.5rem;
+    }
+    
+}
