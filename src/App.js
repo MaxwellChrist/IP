@@ -20,12 +20,13 @@ export default function App() {
     async function IpAddressFinder() {
       let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
       try {
-        const response = await fetch(endpoint);
+        const response = await fetch(endpoint)
         if(response.ok){
           SetError(null)
           const jsonResponse = await response.json()
           setData(jsonResponse)
-        } else {
+        } 
+        else {
           SetError(response.statusText)
         }
       }
@@ -51,7 +52,7 @@ export default function App() {
         <div className="search-input">
           <form onSubmit={userSubmit}>
             <input id="user-input" type="text" placeholder="Search for any IP address or domain"></input>
-            <button id="user-submit" type="submit"><img src="images/icon-arrow.svg" alt="arrow icon within a button" /></button>
+            <button id="user-submit" type="submit"><img src="images/icon-arrow.svg" alt="white arrow icon within a black button" /></button>
           </form>
           {data === null ? <div></div> : <SearchInfo data={data} error={error} />}
         </div>
