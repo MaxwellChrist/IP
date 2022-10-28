@@ -21,7 +21,6 @@ export default function App() {
       let endpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_apiKey}&ipAddress=${address}`
       try {
         const response = await fetch(endpoint);
-        console.log(response)
         if(response.ok){
           SetError(null)
           const jsonResponse = await response.json()
@@ -31,7 +30,6 @@ export default function App() {
         }
       }
       catch(error){
-        console.log(error)
         SetError(error.messages)
       }
     }
